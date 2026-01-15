@@ -29,7 +29,7 @@ margin:0;
 }
 body {
   font-family: Arial, sans-serif;
-  background:#eef1f5;
+  background:#4f4a4a;
   padding:20px;
 
 img{
@@ -53,40 +53,46 @@ h2 {
   margin:20px auto;
 }
 p{
+  text-size:15px;
   text-align:center;
-  color:#06cc3b;
+  color:#050806;
 }
 
 
 input, button {
   width:100%;
   padding:6px;
-  margin-top:10px;
+  margin-top:12px;
   border-radius:8px;
   border:1px solid #ccc;
 }
 
 button {
-  background:#007bff;
+  background:green;
   color:#fff;
   font-size:16px;
   cursor:pointer;
 }
 
 button:hover {
-  background:#0056b3;
+  background:#090cba;
 }
 
 small {
   display:block;
   margin-top:10px;
-  color:#666;
+  color:white;
 }
 
-.move, footer {
+p,footer {
   text-align:center;
-  margin-top:20px;
+  margin-top:4px;
   position:relative;
+}
+#move{
+margin:0px;
+font-size:20px;
+color:#b59400;
 }
 </style>
 </head>
@@ -96,26 +102,26 @@ small {
 
 <div class="container">
   <h2>WELCOME</h2>
-  <P>SSC_PROJECT</P>
+  <P><b>SSC_PROJECT</P>
   <input type="file" id="fileInput" accept="image/*">
 
-  <input type="text" id="baseName" placeholder="900003_photo.jpg">
+  <input type="text" id="baseName" value="900003_photo.jpg" placeholder="900003_photo.jpg">
 
-  <input type="number" id="step" value="3" min="1" placeholder="Step (e.g. 3)">
+  <input type="number" id="step" value="3" min="1" placeholder="Type '3' for (3,6,9.12..)Photos">
 
-  <input type="number" id="count" value="50" min="1" placeholder="How many photos">
+  <input type="number" id="count" value="" min="1" placeholder="How many photos">
 
   <button onclick="createZip()">Create ZIP</button>
 
   <small>
-    • Type "900001_photo.jpg" in box.<br>
+    • Type "900003_photo.jpg" in box.<br>
     • Supports all images<br>
     • All uotput images will reduce <49KB<br>
-    • All Output format JPG<br>
+    • All Output format jpg<br>
   </small>
-</div>
-<div class="move">
-    <p>GO TO: <a href="other.html" rel="otherhtml">Other Project</a></p>
+<nav>
+   <p id="move"><b>MOVE TO : <a href="/www/ssc/other.html" alt=""otherhtmllink">Other-Project</a></p>
+</nav>
 </div>
 <footer><small>copy right @2026 | Manas Debnath</small></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -209,11 +215,10 @@ async function createZip() {
 
   const a = document.createElement("a");
   a.href = URL.createObjectURL(zipBlob);
-  a.download = "49kb_images_odd_series.zip";
+  a.download = "BARCODE_MAINSERVER_IMAGE.zip";
   a.click();
 }
 </script>
 
 </body>
-
 </html>
