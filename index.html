@@ -78,13 +78,14 @@ button:hover {
   background:#090cba;
 }
 
-small {
+#note1 {
   display:block;
   margin-top:10px;
-  color:white;
+  color:#666;
 }
 
-p,footer {
+footer {
+  color:white;
   text-align:center;
   margin-top:4px;
   position:relative;
@@ -98,9 +99,8 @@ color:#b59400;
 </head>
 
 <body>
-<img src="manas.jpeg" alt="logo">
-
 <div class="container">
+  <img src="manas.jpeg" alt="logo">
   <h2>WELCOME</h2>
   <P><b>SSC_PROJECT</P>
   <input type="file" id="fileInput" accept="image/*">
@@ -113,12 +113,12 @@ color:#b59400;
 
   <button onclick="createZip()">Create ZIP</button>
 
-  <small>
+ <small id="note1">
     • Type "900003_photo.jpg" in box.<br>
     • Supports all images<br>
     • All uotput images will reduce <49KB<br>
     • All Output format jpg<br>
-  </small>
+ </small>
 <nav>
    <p id="move"><b>MOVE TO : <a href="/www/ssc/other.html" alt=""otherhtmllink">Other-Project</a></p>
 </nav>
