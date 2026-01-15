@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>49KB Image ZIP (Odd Number Series)</title>
+<title>49KB Image ZIP Generator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <style>
+
 *{
 padding:0;
 margin:0;
@@ -29,17 +32,9 @@ margin:0;
 }
 body {
   font-family: Arial, sans-serif;
-  background:#4f4a4a;
+  background:#eef1f5;
   padding:20px;
 
-img{
-  display:block;
-  max-width:100px;
-  width:100%;
-  margin:20px auto;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-  border-radius:24px;
-}
 
 h2 {
   color:#06cc3b;
@@ -62,13 +57,13 @@ p{
 input, button {
   width:100%;
   padding:6px;
-  margin-top:12px;
+  margin-top:10px;
   border-radius:8px;
   border:1px solid #ccc;
 }
 
 button {
-  background:green;
+  background:GREEN;
   color:#fff;
   font-size:16px;
   cursor:pointer;
@@ -90,38 +85,34 @@ p,footer {
   position:relative;
 }
 #move{
-margin:0px;
+margin:5px;
+color:#23bf04;
 font-size:20px;
-color:#b59400;
 }
 </style>
 </head>
 
 <body>
-<img src="manas.jpeg" alt="logo">
 
 <div class="container">
   <h2>WELCOME</h2>
-  <P><b>SSC_PROJECT</P>
+  <P><b>Other_PROJECT</P>
   <input type="file" id="fileInput" accept="image/*">
-
-  <input type="text" id="baseName" value="900003_photo.jpg" placeholder="900003_photo.jpg">
-
-  <input type="number" id="step" value="3" min="1" placeholder="Type '3' for (3,6,9.12..)Photos">
-
+  <input type="text" id="baseName" value="900001_photo.jpg" placeholder="900001_photo.jpg">
   <input type="number" id="count" value="" min="1" placeholder="How many photos">
 
   <button onclick="createZip()">Create ZIP</button>
 
- <small>
-    • Type "900003_photo.jpg" in box.<br>
+  <small>
+    • Type "900001_photo.jpg" in box.<br>
     • Supports all images<br>
     • All uotput images will reduce <49KB<br>
     • All Output format jpg<br>
- </small>
+  </small>
 <nav>
-   <p id="move"><b>MOVE TO : <a href="/www/ssc/other.html" alt=""otherhtmllink">Other-Project</a></p>
+   <p id="move"><b>MOVE TO : <a href="/www/ssc/index.html" alt=""otherhtmllink">SSC-Project</a></p>
 </nav>
+</div>
 </div>
 <footer><small>copy right @2026 | Manas Debnath</small></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -140,7 +131,7 @@ async function compressImage(file) {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        /* SAFE resize for large images */
+        /* 🔒 SAFE resize for large images */
         const MAX = 1000;
         let w = img.width;
         let h = img.height;
@@ -191,31 +182,23 @@ async function createZip() {
   }
 
   const zip = new JSZip();
-
-  const base = document.getElementById("baseName").value;
-  const step = parseInt(document.getElementById("step").value);
   const count = parseInt(document.getElementById("count").value);
+  const base = document.getElementById("baseName").value;
 
-  if (!base.match(/\d+/)) {
-    alert("Filename must contain a number");
-    return;
-  }
-
-  const startNum = parseInt(base.match(/\d+/)[0]);
-  const suffix = base.replace(startNum, "");
+  const num = parseInt(base.match(/\d+/)[0]);
+  const suffix = base.replace(num, "");
 
   const compressed = await compressImage(file);
 
   for (let i = 0; i < count; i++) {
-    const num = startNum + (i * step);
-    zip.file(num + suffix, compressed);
+    zip.file((num + i) + suffix, compressed);
   }
 
   const zipBlob = await zip.generateAsync({ type:"blob" });
 
   const a = document.createElement("a");
   a.href = URL.createObjectURL(zipBlob);
-  a.download = "BARCODE_MAINSERVER_IMAGE.zip";
+  a.download = "49kb_images.zip";
   a.click();
 }
 </script>
