@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>49KB Image ZIP Generator</title>
+<title>49KB Image ZIP (Odd Number Series)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 <style>
-
 *{
 padding:0;
 margin:0;
@@ -32,9 +29,17 @@ margin:0;
 }
 body {
   font-family: Arial, sans-serif;
-  background:#eef1f5;
+  background:#4f4a4a;
   padding:20px;
 
+img{
+  display:block;
+  max-width:100px;
+  width:100%;
+  margin:20px auto;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  border-radius:24px;
+}
 
 h2 {
   color:#06cc3b;
@@ -48,28 +53,29 @@ h2 {
   margin:20px auto;
 }
 p{
+  text-size:15px;
   text-align:center;
-  color:#06cc3b;
+  color:#050806;
 }
 
 
 input, button {
   width:100%;
   padding:6px;
-  margin-top:10px;
+  margin-top:12px;
   border-radius:8px;
   border:1px solid #ccc;
 }
 
 button {
-  background:#007bff;
+  background:green;
   color:#fff;
   font-size:16px;
   cursor:pointer;
 }
 
 button:hover {
-  background:#0056b3;
+  background:#090cba;
 }
 
 small {
@@ -78,40 +84,46 @@ small {
   color:#666;
 }
 
-.move, footer {
+p,footer {
   text-align:center;
-  margin-top:20px;
+  margin-top:4px;
   position:relative;
 }
-
+#move{
+margin:0px;
+font-size:20px;
+color:#b59400;
+}
 </style>
 </head>
 
 <body>
+<img src="manas.jpeg" alt="logo">
 
 <div class="container">
   <h2>WELCOME</h2>
-  <P>Other_PROJECT</P>
+  <P><b>SSC_PROJECT</P>
   <input type="file" id="fileInput" accept="image/*">
-  <input type="text" id="baseName" placeholder="900001_photo.jpg">
-  <input type="number" id="count" value="10" min="1">
+
+  <input type="text" id="baseName" value="900003_photo.jpg" placeholder="900003_photo.jpg">
+
+  <input type="number" id="step" value="3" min="1" placeholder="Type '3' for (3,6,9.12..)Photos">
+
+  <input type="number" id="count" value="" min="1" placeholder="How many photos">
 
   <button onclick="createZip()">Create ZIP</button>
-<nav>
-  
-</nav>
-  <small>
-    • type "900001_photo.jpg" in box.<br>
+
+ <small>
+    • Type "900003_photo.jpg" in box.<br>
     • Supports all images<br>
-    • All uotput images will reduce ,49KB<br>
-    • All Output format JPG<br>
-  </small>
-</div>
-<div class="move">
-<p>GO TO: <a href="index.html" rel="otherhtml">SSC Project</a></P>
+    • All uotput images will reduce <49KB<br>
+    • All Output format jpg<br>
+ </small>
+<nav>
+   <p id="move"><b>MOVE TO : <a href="/www/ssc/other.html" alt=""otherhtmllink">Other-Project</a></p>
+</nav>
 </div>
 <footer><small>copy right @2026 | Manas Debnath</small></footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
 <script>
@@ -128,7 +140,7 @@ async function compressImage(file) {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        /* 🔒 SAFE resize for large images */
+        /* SAFE resize for large images */
         const MAX = 1000;
         let w = img.width;
         let h = img.height;
@@ -179,23 +191,31 @@ async function createZip() {
   }
 
   const zip = new JSZip();
-  const count = parseInt(document.getElementById("count").value);
-  const base = document.getElementById("baseName").value;
 
-  const num = parseInt(base.match(/\d+/)[0]);
-  const suffix = base.replace(num, "");
+  const base = document.getElementById("baseName").value;
+  const step = parseInt(document.getElementById("step").value);
+  const count = parseInt(document.getElementById("count").value);
+
+  if (!base.match(/\d+/)) {
+    alert("Filename must contain a number");
+    return;
+  }
+
+  const startNum = parseInt(base.match(/\d+/)[0]);
+  const suffix = base.replace(startNum, "");
 
   const compressed = await compressImage(file);
 
   for (let i = 0; i < count; i++) {
-    zip.file((num + i) + suffix, compressed);
+    const num = startNum + (i * step);
+    zip.file(num + suffix, compressed);
   }
 
   const zipBlob = await zip.generateAsync({ type:"blob" });
 
   const a = document.createElement("a");
   a.href = URL.createObjectURL(zipBlob);
-  a.download = "49kb_images.zip";
+  a.download = "BARCODE_MAINSERVER_IMAGE.zip";
   a.click();
 }
 </script>
