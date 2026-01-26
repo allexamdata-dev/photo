@@ -5,52 +5,121 @@
 <title>49KB Image ZIP (Odd Number Series)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-*{
-padding:0;
-margin:0;
-}
-@media (max-width: 768px) {
- 
- body {padding:10px;}
-
-  .prog { order:1;}
-.detials{order:2}
-.link{order:3}
-
-}
-body {font-family: 'Segoe UI', Arial, sans-serif; background: #474b52; margin: 0; padding: 20px; }
-
-img{
-  display:block;
-  max-width:100px;
-  width:100%;
-  margin:20px auto;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-  border-radius:24px;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #474b52;
+  padding: 12px;
+}
+
+/* ---------- LAYOUT ---------- */
+.container {
+  display: flex;
+  flex-direction: column;   /* MOBILE FIRST */
+  gap: 16px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ---------- COMMON BOX ---------- */
+.prog,
+.detials,
+.link {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* ---------- PROGRAM BOX ---------- */
+.prog {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+img {
+  display: block;
+  max-width: 80px;
+  width: 100%;
+  margin: 10px auto;
+  border-radius: 20px;
+}
+
+/* ---------- TEXT ---------- */
 h2 {
-  color:#06cc3b;
-  text-align:center;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2c3e50;
 }
-.container { display: flex; gap: 20px; max-width: 1100px; margin: auto;  }
 
-.prog{ flex: 1; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
-        h2 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-	
-  input, button { width:100%;  padding:15px;  margin-top:25px;  border-radius:8px;  border:1px solid #ccc;}
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
 
-  button {  background:green;  color:#fff; font-size:16px;  cursor:pointer;}
+/* ---------- INPUTS ---------- */
+input,
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
 
-  button:hover { background:#090cba; }
+button {
+  background: green;
+  color: white;
+  cursor: pointer;
+}
 
-.detials{ flex: 1.5; background: white; color: #1a212b; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; font-size:20px; padding:6px; margin:6px;}
+button:hover {
+  background: #090cba;
+}
 
-.link{ width:90%; flex: 1;  padding: 20px; margin:12px;  background: #02cc3f; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; justify-content:center; align-items:center  }
+/* ---------- DETAILS ---------- */
+.detials {
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-a{ text-decoration: none;  color:white; font-size: 18px; text-align:center;}
+/* ---------- LINK ---------- */
+.link {
+  background: #02cc3f;
+  text-align: center;
+}
 
-footer{align-items:center; color:white;display:flex; padding:40px;justify-content:center;}
+.link a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* ---------- DESKTOP UPGRADE ---------- */
+@media (min-width: 769px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .prog {
+    flex: 1;
+  }
+
+  .detials {
+    flex: 1.5;
+  }
+
+  .link {
+    flex: 1;
+  }
+}
+
 </style>
 </head>
 
@@ -184,6 +253,7 @@ async function createZip() {
 
 </body>
 </html>
+
 
 
 
