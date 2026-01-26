@@ -10,72 +10,80 @@ padding:0;
 margin:0;
 }
 @media (max-width: 768px) {
-  body {
-    padding:10px;
-   
-  }
+ 
+ body {padding:10px;}
 
-  h2 {
-    font-size:22px;
-  }
+  .prog { order:1;}
+.detials{order:2}
+.link{order:3}
 
-  p {
-    font-size:18px;
-  }
-
-  .container {
-    padding:15px;
-  }
 }
-  body { font-family: Arial, sans-serif;  background:#4f4a4a; padding:20px;}
+body {font-family: 'Segoe UI', Arial, sans-serif; background: #474b52; margin: 0; padding: 20px; }
 
-  img{ display:block; max-width:100px; width:100%; margin:20px auto; box-shadow:0 4px 15px rgba(0,0,0,0.1);  border-radius:24px; }
+img{
+  display:block;
+  max-width:100px;
+  width:100%;
+  margin:20px auto;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  border-radius:24px;
+}
 
-  h2 { color:#06cc3b; text-align:center; }
+h2 {
+  color:#06cc3b;
+  text-align:center;
+}
+.container { display: flex; gap: 20px; max-width: 1100px; margin: auto;  }
 
-  .container { background-color:#fff; max-width:500px; width:100%; padding:20px; margin:20px auto; }
-
-  p{ text-size:15px;  text-align:center;  color:#050806;}
-
-  input, button { width:100%;  padding:6px;  margin-top:12px;  border-radius:8px;  border:1px solid #ccc;}
+.prog{ flex: 1; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+        h2 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+	
+  input, button { width:100%;  padding:15px;  margin-top:25px;  border-radius:8px;  border:1px solid #ccc;}
 
   button {  background:green;  color:#fff; font-size:16px;  cursor:pointer;}
 
   button:hover { background:#090cba; }
 
- #note1 { display:block; margin-top:10px; color:#666; }
+.detials{ flex: 1.5; background: white; color: #1a212b; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; font-size:20px; padding:6px; margin:6px;}
 
- footer { color:white; text-align:center; margin-top:4px;  position:relative; }
+.link{ width:90%; flex: 1;  padding: 20px; margin:12px;  background: #02cc3f; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; justify-content:center; align-items:center  }
 
- #move{ margin:0px; font-size:20px; color:#b59400; }
+a{ text-decoration: none;  color:white; font-size: 18px; text-align:center;}
 
+footer{align-items:center; color:white;display:flex; padding:40px;justify-content:center;}
 </style>
 </head>
 
 <body>
 <div class="container">
-  <img src="manas.jpeg" alt="logo">
-  <h2>WELCOME</h2>
-  <P><b>SSC_PROJECT</P>
-  <input type="file" id="fileInput" accept="image/*">
+      <div class="prog">
+ 	 <img src="manas.jpeg" alt="logo">
+  	<h2>WELCOME</h2>
+  	<P><b>SSC_PROJECT</P>
+  	<input type="file" id="fileInput" accept="image/*">
 
-  <input type="text" id="baseName" value="900003_photo.jpg" placeholder="900003_photo.jpg">
+  	<input type="text" id="baseName" value="900003_photo.jpg" placeholder="900003_photo.jpg">
 
-  <input type="number" id="step" value="3" min="1" placeholder="Type '3' for (3,6,9.12..)Photos">
+ 	 <input type="number" id="step" value="3" min="1" placeholder="Type '3' for (3,6,9.12..)Photos">
 
-  <input type="number" id="count" value="" min="1" placeholder="How many photos">
+  	<input type="number" id="count" value="" min="1" placeholder="How many photos">
 
-  <button onclick="createZip()">Create ZIP</button>
-
- <small id="note1">
-    • Type "900003_photo.jpg" in box.<br>
-    • Supports all images<br>
-    • All uotput images will reduce <49KB<br>
-    • All Output format jpg<br>
- </small>
-<nav>
-   <p id="move"><b>MOVE TO : <a href="marge.html" alt=""otherhtmllink">PDF MARGE</a></p>
-</nav>
+  	<button onclick="createZip()">Create ZIP</button>
+     </div>
+     <div class="detials">
+      	 <p> NOTE<br>
+	• Type <b>"900003_photo.jpg"</b> in box for <b>"SSC_PROJECT"</b>.<br>
+	• Type<b> "900001_photo.jpg"</b> in box for <b>"OTHER_PROJECT"</b>.<br>
+	• Type odd<b> ("3")</b> number for <b>"SSC_PROJECT"</b>.<br>
+	• Type odd <b>("1")</b> number for <b>"OTHER_PROJECT</b>.<br> 
+    	• Supports all images<br>
+    	• All uotput images will reduce <49KB<br>
+    	• All Output format jpg</p>
+     	
+     </div>
+     <div class="link">
+     <p id="move"><b> <a href="/practice/pdf_marge.html">PDF MARGE LINK</a></p>
+     </div>
 </div>
 <footer><small>copy right @2026 | Manas Debnath</small></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -176,7 +184,6 @@ async function createZip() {
 
 </body>
 </html>
-
 
 
 
