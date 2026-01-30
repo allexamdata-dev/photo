@@ -116,6 +116,18 @@ h2{
   <div class="preview-container">
     <div class="no-preview" id="placeholder">Select a file to preview</div>
     <iframe id="preview-frame"></iframe>
+    <label style="margin-bottom:8px;font-weight:600">Compression Level</label>
+<select id="compress-level" style="padding:10px;border-radius:6px">
+  <option value="screen">High (Smallest)</option>
+  <option value="ebook" selected>Medium (Recommended)</option>
+  <option value="printer">Low (Best Quality)</option>
+</select>
+<div style="margin-top:15px">
+  <div style="background:#eee;border-radius:6px;overflow:hidden">
+    <div id="progress-bar" style="height:8px;width:0%;background:#28a745"></div>
+  </div>
+</div>
+
   </div>
 </div>
 
@@ -199,3 +211,4 @@ mergeBtn.addEventListener("click", async ()=>{
 
 </body>
 </html>
+
