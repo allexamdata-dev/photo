@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Merger & Compressor</title>
+</head>
+<body>
+
+<h2>Merge & Compress PDFs</h2>
+
+<input type="file" id="pdfs" multiple accept="application/pdf">
+<br><br>
+
+<button onclick="merge()">Merge & Download</button>
+<p id="status"></p>
+
+<script>
+async function merge() {
+  const files = document.getElementById("pdfs").files;
+  if (files.length < 2) {
+    alert("Select at least 2 PDFs");
+    return;
+  }
+
+  const formData = new FormData();
+  for (let f of files) formData.append("pdfs", f);
+
+  document.getElementById("status").innerText = "Processing on server...";
+
+  const res = await fetch("/merge", {
+    method: "POST",
+    body: formData
+  });
+
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "merged-compressed.pdf";
+  a.click();
+
+  document.getElementById("status").innerText = "Done ✅";
+}
+</script>
+
+</body>
+</html>
