@@ -122,13 +122,20 @@ h2{
   <option value="ebook" selected>Medium (Recommended)</option>
   <option value="printer">Low (Best Quality)</option>
 </select>
-<div style="margin-top:15px">
+
+
+  </div>
+  <div style="margin-top:15px">
   <div style="background:#eee;border-radius:6px;overflow:hidden">
     <div id="progress-bar" style="height:8px;width:0%;background:#28a745"></div>
   </div>
+    <label style="margin-bottom:8px;font-weight:600">Compression Level</label>
+<select id="compress-level" style="padding:10px;border-radius:6px">
+  <option value="screen">High (Smallest)</option>
+  <option value="ebook" selected>Medium (Recommended)</option>
+  <option value="printer">Low (Best Quality)</option>
+</select>
 </div>
-
-  </div>
 </div>
 
 <script>
@@ -211,4 +218,5 @@ mergeBtn.addEventListener("click", async ()=>{
 
 </body>
 </html>
+
 
